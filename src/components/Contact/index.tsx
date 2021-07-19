@@ -54,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
       margin: "15px",
       cursor: "pointer",
       fontSize: 32,
+
+      "&:hover": {
+        color: "black",
+      },
     },
   },
 }));
