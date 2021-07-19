@@ -15,13 +15,13 @@ interface contactProps {}
 const useStyles = makeStyles((theme) => ({
   main: {
     color: "white",
-    backgroundImage: `url("/images/bg-pattern-intro.svg"), linear-gradient(hsl(12,100%,70%),hsl(354,100%,62%))`,
+    backgroundColor: "#2c2d3f",
+    backgroundImage: `url("/images/bg-pattern-circles.svg")`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "39% 45%",
     backgroundSize: "450%",
     textAlign: "center",
     [theme.breakpoints.up("md")]: {
-      backgroundImage: `url("/images/bg-pattern-intro.svg"), linear-gradient(hsl(12,100%,72%),hsl(354,100%,62%))`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "28% 51%",
       backgroundSize: "235%",
