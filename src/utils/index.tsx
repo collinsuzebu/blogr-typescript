@@ -1,4 +1,4 @@
-import React, { useEffect, useState, RefObject } from "react";
+import { useEffect, useState, RefObject } from "react";
 
 const useMobileDevice = () => {
   const [width, setWidth] = useState(0);
