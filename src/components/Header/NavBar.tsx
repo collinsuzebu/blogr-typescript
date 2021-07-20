@@ -1,11 +1,10 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import { CompanySubMenu, ConnectSubMenu, ProductSubMenu } from "./SubMenus";
-import Typography from "@material-ui/core/Typography";
-import { useMobileDevice, useOnClickOutside } from "../../utils";
+import { useMobileDevice } from "../../utils";
 import ColorButton from "../Common/ColorButton";
 import Logo from "../Common/Logo";
+import Menu from "./Menu/Menu";
 
 export interface StyleProps {
   show: boolean;
@@ -73,57 +72,15 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
 interface NavBarProps {}
 
 const NavBar: React.FC<NavBarProps> = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isMobileDevice = useMobileDevice();
-  const [selected, setSelected] = useState("");
+  const ismobile = useMobileDevice();
 
-  const classes = useStyles({ show: !isMobileDevice });
-
-  const handleClickOutside = () => setSelected("");
-
-  useOnClickOutside(ref, handleClickOutside);
-
-  const toggleMenuItem = (name: string) => {
-    setSelected((state) => (name === state ? "" : name));
-  };
+  const classes = useStyles({ show: !ismobile });
 
   return (
     <Box className={classes.root}>
-      <header className={classes.header} ref={ref}>
+      <header className={classes.header}>
         <Logo />
-        <Box className={classes.menuItem}>
-          <Typography
-            className={classes.menuTitle}
-            onMouseOver={() => toggleMenuItem("product")}
-          >
-            Product
-          </Typography>
-          <Box className={classes.subMenu}>
-            <ProductSubMenu show={selected === "product"} />
-          </Box>
-        </Box>
-        <Box className={classes.menuItem}>
-          <Typography
-            className={classes.menuTitle}
-            onMouseOver={() => toggleMenuItem("company")}
-          >
-            Company
-          </Typography>
-          <Box className={classes.subMenu}>
-            <CompanySubMenu show={selected === "company"} />
-          </Box>
-        </Box>
-        <Box className={classes.menuItem}>
-          <Typography
-            className={classes.menuTitle}
-            onMouseOver={() => toggleMenuItem("connect")}
-          >
-            Connect
-          </Typography>
-          <Box className={classes.subMenu}>
-            <ConnectSubMenu show={selected === "connect"} />
-          </Box>
-        </Box>
+        <Menu />
         <Box className={classes.buttonWrapper}>
           <ColorButton
             color="#FFF"

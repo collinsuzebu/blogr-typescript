@@ -65,13 +65,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   container: {
-    marginTop: "10px",
-    position: "absolute",
+    marginTop: "5em",
     width: "80%",
     textAlign: "center",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
   },
 
   h1: {

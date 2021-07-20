@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import { Theme, Typography } from "@material-ui/core";
-import { ProductSubMenu, CompanySubMenu, ConnectSubMenu } from "../SubMenus";
 import Line from "../../Common/Line";
 import ColorButton from "../../Common/ColorButton";
+import Menu from "../Menu/Menu";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     position: "relative",
   },
@@ -30,26 +29,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "22px",
     zIndex: 2,
   },
-
-  menuItem: {
-    padding: "10px",
-    margin: "4px 0",
-    width: "100%",
-    textAlign: "center",
-  },
-
-  menuTitle: {
-    position: "relative",
-    color: "hsl(207, 13%, 34%)",
-    margin: 0,
-    padding: 0,
-    fontSize: "18px",
-
-    "&::after": {
-      content: "url('/images/icon-arrow-dark.svg')",
-      marginLeft: theme.spacing(1),
-    },
-  },
 }));
 
 interface MobileMenuProps {}
@@ -57,42 +36,10 @@ interface MobileMenuProps {}
 const MobileMenu: React.FC<MobileMenuProps> = ({}) => {
   const classes = useStyles();
 
-  const [selected, setSelected] = useState("");
-
-  const toggleMenuItem = (name: string) => {
-    setSelected((state) => (name === state ? "" : name));
-  };
-
   return (
     <Box className={classes.root}>
       <Box className={classes.modal}>
-        <Box className={classes.menuItem}>
-          <Typography
-            className={classes.menuTitle}
-            onClick={() => toggleMenuItem("product")}
-          >
-            Product
-          </Typography>
-          <ProductSubMenu show={selected === "product"} />
-        </Box>
-        <Box className={classes.menuItem}>
-          <Typography
-            className={classes.menuTitle}
-            onClick={() => toggleMenuItem("company")}
-          >
-            Company
-          </Typography>
-          <CompanySubMenu show={selected === "company"} />
-        </Box>
-        <Box className={classes.menuItem}>
-          <Typography
-            className={classes.menuTitle}
-            onClick={() => toggleMenuItem("connect")}
-          >
-            Connect
-          </Typography>
-          <ConnectSubMenu show={selected === "connect"} />
-        </Box>
+        <Menu />
         <Line margin={20} />
         <ColorButton
           variant="contained"
